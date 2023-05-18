@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const Register = () => {
     const { register, handleSubmit, formState: { errors }, watch } = useForm();
     const onSubmit = (data) => {
-        
+        console.log(import.meta.env.JAMI)
         console.log(data);
     };
     const password = watch('password');

@@ -1,32 +1,50 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { FaGoogle } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../provider/AuthProvider';
+
 
 const Login = () => {
     const { register, handleSubmit, watch, formState: { errors }, reset } = useForm();
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [showPassword, setShowPassword] = useState(false);
+
+
+    const { user, SignOutUser, loginWithGoogle, CreateUser, login } = useContext(AuthContext)
+
+    //for redirect pages 
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/'
+    console.log(location)
+
 
 
 
     const onSubmit = data => {
         console.log(data)
-        // fetch(``, {
-        //     method: "POST",
-        //     headers: {
-        //         "content-type": "application/json"
-        //     },
-        //     body: JSON.stringify()
-        // })
-        //     .then(res => { })
-        //     .then(data => {
-        //         reset()
+        login(data.email, data.password)
+            .then(result => {
+                const loggedUser = result.user
+                console.log(loggedUser)
+                navigate(from, { replace: true })
 
-        //     })
+            })
+            .catch(err => console.log(err))
 
 
     };
+    const handleGoogleLogin = () => {
+        loginWithGoogle()
+            .then(result => {
+                const loggedUser = result.user
+                console.log(loggedUser)
+                navigate(from, { replace: true })
+
+            })
+            .catch(err => console.log(err))
+
+    }
 
 
 
@@ -64,9 +82,9 @@ const Login = () => {
                                     <span className="label-text">Password</span>
                                 </label>
                                 <input
-                                    type="password"
+                                    type={showPassword ? 'text' : 'password'}
                                     className="input input-bordered"
-                                    placeholder="enter your password"
+                                    placeholder="Enter your password"
                                     id="password"
                                     {...register('password', {
                                         required: 'Password is required',
@@ -76,12 +94,24 @@ const Login = () => {
                                         },
                                     })}
                                 />
-                                {errors.password && <span>{errors.password.message}</span>}
+
+                                <div className="flex justify-between items-center">
+                                <label htmlFor="showPassword" className="ml-2">
+                                    Show Password
+                                    <input
+                                        type="checkbox"
+                                        id="showPassword"
+                                        checked={showPassword}
+                                        onChange={() => setShowPassword(!showPassword)}
+                                        className="ml-1"
+                                    />
+                                </label>
 
 
                                 <label className="label">
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
+                                </div>
                             </div>
                             <div className="form-control mt-6">
                                 <button
@@ -96,7 +126,7 @@ const Login = () => {
                     </form>
                     <div className="divider">OR</div>
                     <div className="text-center mb-5">
-                        <button className="btn  btn-outline   hover:bg-purple-400 mx-auto w-1/2"><FaGoogle /><span className='ms-2 lowercase'>Continue with Google</span></button>
+                        <button onClick={handleGoogleLogin} className="btn  btn-outline   hover:bg-purple-400 mx-auto w-1/2"><FaGoogle /><span className='ms-2 lowercase'>Continue with Google</span></button>
                         <p className='my-2'>Don't have an account? <Link to="/register" className='text-primary font-semibold'>Create an account</Link></p>
                     </div>
                 </div>

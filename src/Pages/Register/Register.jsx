@@ -1,14 +1,45 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../provider/AuthProvider';
+import { toast } from 'react-hot-toast';
+import { updateProfile } from 'firebase/auth';
 
 
 
 const Register = () => {
-    const { register, handleSubmit, formState: { errors }, watch } = useForm();
+    const { auth, CreateUser } = useContext(AuthContext)
+    //for redirect pages 
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location.state?.from?.pathname || '/'
+    const { register, handleSubmit, formState: { errors }, watch,reset } = useForm();
     const onSubmit = (data) => {
-        console.log(import.meta.env.JAMI)
-        console.log(data);
+        console.log(data)
+        CreateUser(data.email, data.password)
+            .then(result => {
+                const loggedUser = result.user
+                // add name and photoLink to profile
+                updateProfile(auth.currentUser, {
+                    displayName: data.name,
+                    photoURL: data.imageLink,
+                    
+
+                }).then(() => {
+                    // make reload so that profile pic show
+                    window.location.reload();
+                    console.log(photoURL)
+                    navigate(from, { replace: true })
+                }).catch((error) => {
+                    console.log(error.message)
+                });
+
+                console.log(loggedUser)
+                toast.success('Login success')
+                reset()
+                navigate(from, { replace: true })
+            })
+            .catch(error => { toast.error(error.message) })
     };
     const password = watch('password');
     const confirmPassword = watch('confirmPassword');
@@ -51,7 +82,7 @@ const Register = () => {
                                 {errors.email && <span>{errors.email.message}</span>}
                             </div>
                             <div className="from-control">
-                                <label className="label"  htmlFor="imageLink"><span className="label-text">Image Link</span></label>
+                                <label className="label" htmlFor="imageLink"><span className="label-text">Image Link</span></label>
                                 <input
                                     type="text"
                                     id="imageLink"
@@ -76,7 +107,7 @@ const Register = () => {
                                 />
                                 {errors.password && <span>{errors.password.message}</span>}
                             </div>
-                           
+
 
                             <div className="form-control">
                                 <label className="label" htmlFor="confirmPassword"><span className="label-text">Confirm Password</span> </label>

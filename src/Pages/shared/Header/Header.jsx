@@ -3,14 +3,23 @@ import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../../../provider/AuthProvider';
 
 const Header = () => {
-    const user = useContext(AuthContext) 
-    console.log(user)
+    const { user, SignOutUser, loginWithGoogle, CreateUser, login } = useContext(AuthContext)
+    // console.log(user)
+
+    const handleSignOut = () => {
+        SignOutUser()
+
+    }
+
+
 
     const routeName = <>
         <li><NavLink className={({ isActive }) => (isActive ? 'text-error font-semibold  ' : 'text-dark')} to="/">Home</NavLink></li>
         <li><NavLink className={({ isActive }) => (isActive ? 'text-error  font-semibold' : 'text-dark')} to="/allToys">All Toys</NavLink></li>
-        <li><NavLink className={({ isActive }) => (isActive ? 'text-error font-semibold ' : 'text-dark')} to="/myToys">My Toys</NavLink></li>
-        <li><NavLink className={({ isActive }) => (isActive ? 'text-error  font-semibold' : 'text-dark')} to="/addAToy">Add A Toy</NavLink></li>
+        {
+            user && <><li><NavLink className={({ isActive }) => (isActive ? 'text-error font-semibold ' : 'text-dark')} to="/myToys">My Toys</NavLink></li>
+                <li><NavLink className={({ isActive }) => (isActive ? 'text-error  font-semibold' : 'text-dark')} to="/addAToy">Add A Toy</NavLink></li></>
+        }
         <li><NavLink className={({ isActive }) => (isActive ? 'text-error  font-semibold' : 'text-dark')} to="/blogs">Blogs</NavLink></li>
 
 
@@ -44,8 +53,20 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <Link to="/login"><button className="btn  bg-purple-400 ">Login</button>
-                    </Link>
+                    {
+                        <div className="tooltip tooltip-left" data-tip={user?.displayName}>
+
+                            {
+                                user?.photoURL ? <img style={{ height: 50, width: 50 }} src={user.photoURL} className="rounded-full mx-2 " /> : ""
+                            }
+
+                        </div>
+                    }
+                    {
+                        user ? <Link ><button onClick={handleSignOut} className="btn  bg-purple-400 ">Log out</button>
+                        </Link> : <Link to="/login"><button className="btn  bg-purple-400 ">Login</button>
+                        </Link>
+                    }
                 </div>
             </div>
         </div>

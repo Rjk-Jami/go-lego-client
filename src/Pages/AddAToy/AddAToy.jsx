@@ -9,15 +9,25 @@ const AddAToy = () => {
     const [selectedOption, setSelectedOption] = useState(null);
 
     const onSubmit = (data) => {
-        
+        data.category = selectedOption.value
         data.email = user?.email
         data.sellerName = user?.displayName
         console.log("jami", data);
-        // ...
+        fetch(`http://localhost:5000/addAToy`,{
+            method:"POST",
+            headers:{
+                "content-type":"application/json"
+            },
+            body: JSON.stringify(data)
+        })
+        .then(res=>{})
+        .then(data=>{
+            reset()
+        })
+
     };
 
     const options = [
-        { value: "city", label: "city" },
         { value: "starWars", label: "starWars" },
         { value: "architecture", label: "architecture" },
         { value: "cars", label: "cars" },
@@ -33,14 +43,15 @@ const AddAToy = () => {
     ];
 
     return (
-        <div>
-            <form onSubmit={handleSubmit(onSubmit)} className="w-1/2 mx-auto">
+        <div className='my-5'>
+            <form onSubmit={handleSubmit(onSubmit)} className="w-1/2 mx-auto space-y-4">
                 <div className="grid md:grid-cols-2 grid-cols-1 gap-3 items-center">
                     <div className="">
                         <label htmlFor="name" className="block text-sm font-medium text-gray-700">
                             Toy Name
                         </label>
                         <input
+                        placeholder='Toy name'
                             type="text"
                             id="name"
                             {...register('name', { required: true })}
@@ -53,6 +64,7 @@ const AddAToy = () => {
                             Image Link
                         </label>
                         <input
+                        placeholder='Toy Photo'
                             type="text"
                             id="imgLink"
                             {...register('imgLink', { required: true })}
@@ -77,6 +89,7 @@ const AddAToy = () => {
                             Price
                         </label>
                         <input
+                        placeholder='Toy Price'
                             type="text"
                             id="price"
                             {...register('price', { required: true })}
@@ -89,6 +102,7 @@ const AddAToy = () => {
                             Available Quantity
                         </label>
                         <input
+                        placeholder='Available Quantity'
                             type="text"
                             id="availableQuantity"
                             {...register('availableQuantity', { required: true })}
@@ -102,7 +116,6 @@ const AddAToy = () => {
                         </label>
                         <input
                             type="date"
-                            // defaultValue={new Date().toISOString().substr(0, 10)}
                             id="applyDate"
                             {...register('applyDate', { required: true })}
                             className="mt-1 px-3 py-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
@@ -143,10 +156,10 @@ const AddAToy = () => {
                     />
                     {errors.message && <p className="text-red-500">Description is required</p>}
                 </div>
-                <div className="">
+                <div className="text-center">
                     <button
                         type="submit"
-                        className="px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+                        className="btn  bg-purple-400 btn-wide "
                     >
                         Submit
                     </button>

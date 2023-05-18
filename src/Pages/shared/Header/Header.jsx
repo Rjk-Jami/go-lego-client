@@ -16,10 +16,10 @@ const Header = () => {
     const routeName = <>
         <li><NavLink className={({ isActive }) => (isActive ? 'text-error font-semibold  ' : 'text-dark')} to="/">Home</NavLink></li>
         <li><NavLink className={({ isActive }) => (isActive ? 'text-error  font-semibold' : 'text-dark')} to="/allToys">All Toys</NavLink></li>
-        {
-            user && <><li><NavLink className={({ isActive }) => (isActive ? 'text-error font-semibold ' : 'text-dark')} to="/myToys">My Toys</NavLink></li>
+        
+            <><li><NavLink className={({ isActive }) => (isActive ? 'text-error font-semibold ' : 'text-dark')} to="/myToys">My Toys</NavLink></li>
                 <li><NavLink className={({ isActive }) => (isActive ? 'text-error  font-semibold' : 'text-dark')} to="/addAToy">Add A Toy</NavLink></li></>
-        }
+        
         <li><NavLink className={({ isActive }) => (isActive ? 'text-error  font-semibold' : 'text-dark')} to="/blogs">Blogs</NavLink></li>
 
 

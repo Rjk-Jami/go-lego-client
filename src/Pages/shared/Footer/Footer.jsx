@@ -7,6 +7,8 @@ const Footer = () => {
   <div className='flex flex-col items-center'>
     <img className='w-1/2 ' src="https://i.ibb.co/bj0LbmF/lego-2-svgrepo-com-1.png" alt="" />
     <p  className='text-center  '>GO LEGO Ltd.<br/ >Providing reliable store since 2015</p>
+    
+    <p className='text-center  '>&copy; 2023 GO LEGO. All rights reserved.</p>
   </div> 
   
  

@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const TableRow = ({toy}) => {
     const {_id,sellerName,rating,price,name,message,imgLink,email,category ,availableQuantity,applyDate} =toy
     return (
         <tbody>
-            {/* row 1 */}
+           
             <tr >
 
                 <td >
@@ -35,7 +36,7 @@ const TableRow = ({toy}) => {
   {availableQuantity}
 </td>
                 <th>
-                    <button className="btn btn-outline btn-xs bg-purple-200  hover:bg-purple-400">details</button>
+                    <Link to={`/allToys/${_id}`}><button className="btn btn-outline btn-xs bg-purple-200  hover:bg-purple-400">details</button></Link>
                 </th>
             </tr>
 

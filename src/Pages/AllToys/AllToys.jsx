@@ -21,7 +21,7 @@ const [loading , setLoading] = useState(true)
             loading && <div className=""><progress className="progress w-full"></progress></div>
 
         }
-            <table className="table w-full ">
+            <table className="table table-zebra w-full ">
                 {/* head */}
                 <thead >
                     <tr className=''>

@@ -44,8 +44,8 @@ const AddAToy = () => {
 
     return (
         <div className='my-5'>
-            <form onSubmit={handleSubmit(onSubmit)} className="w-1/2 mx-auto space-y-4">
-                <div className="grid md:grid-cols-2 grid-cols-1 gap-3 items-center">
+            <form onSubmit={handleSubmit(onSubmit)} className="w-2/3 mx-auto space-y-4">
+                <div className="grid md:grid-cols-2 grid-cols-1 gap-2 items-center">
                     <div className="">
                         <label htmlFor="name" className="block text-sm font-medium text-gray-700">
                             Toy Name
@@ -84,7 +84,8 @@ const AddAToy = () => {
                             options={options}
                         />
                     </div>
-                    <div className="">
+                    <div className="flex">
+                        <div className=" flex flex-col ">
                         <label htmlFor="price" className="block text-sm font-medium text-gray-700">
                             Price
                         </label>
@@ -96,9 +97,8 @@ const AddAToy = () => {
                             className="mt-1 px-3 py-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                         />
                         {errors.price && <p className="text-red-500">Price is required</p>}
-                    </div>
-                    <div className="">
-                        <label htmlFor="availableQuantity" className="block text-sm font-medium text-gray-700">
+                        </div>
+                        <div className=" flex flex-col "><label htmlFor="availableQuantity" className="block text-sm font-medium text-gray-700">
                             Available Quantity
                         </label>
                         <input
@@ -108,8 +108,9 @@ const AddAToy = () => {
                             {...register('availableQuantity', { required: true })}
                             className="mt-1 px-3 py-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                         />
-                        {errors.availableQuantity && <p className="text-red-500">Available quantity is required</p>}
+                        {errors.availableQuantity && <p className="text-red-500">Available quantity is required</p>}</div>
                     </div>
+
                     <div className="">
                         <label htmlFor="applyDate" className="block text-sm font-medium text-gray-700">
                             Added Date
@@ -122,7 +123,7 @@ const AddAToy = () => {
                         />
                         {errors.applyDate && <p className="text-red-500">Added date is required</p>}
                     </div>
-                </div>
+                
                 <div className="">
                     <label htmlFor="price" className="block text-sm font-medium text-gray-700">
                         Rating
@@ -142,6 +143,7 @@ const AddAToy = () => {
                         ))}
                         {errors.rating && <p className="text-red-500">Rating is required</p>}
                     </div>
+                </div>
                 </div>
                 <div className="">
                     <label htmlFor="applyDate" className="block text-sm font-medium text-gray-700">

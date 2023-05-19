@@ -51,7 +51,7 @@ const Register = () => {
             <div className="card  w-full shadow-2xl bg-base-100">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="card-body">
-                        <div className=" grid grid-cols-1 gap-2 ">
+                        <div className=" grid grid-cols-2 gap-3">
                             <div className="form-control">
                                 <label className="label" htmlFor="name"><span className="label-text">Name</span></label>
                                 <input
@@ -81,6 +81,8 @@ const Register = () => {
                                 />
                                 {errors.email && <span>{errors.email.message}</span>}
                             </div>
+                            </div>
+                            
                             <div className="from-control">
                                 <label className="label" htmlFor="imageLink"><span className="label-text">Image Link</span></label>
                                 <input
@@ -91,6 +93,7 @@ const Register = () => {
                                 />
                                 {errors.imageLink && <p>{errors.imageLink.message}</p>}
                             </div>
+                            <div className='grid grid-cols-2 gap-3'>
                             <div className="form-control">
                                 <label className="label" htmlFor="password"><span className="label-text">Password</span></label>
                                 <input

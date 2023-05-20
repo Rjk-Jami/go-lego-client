@@ -1,8 +1,11 @@
 import { handler } from 'daisyui';
 import React from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
+import useLegoTitle from '../../hooks/useLegoTitle';
 
 const ToyDetails = () => {
+    useLegoTitle('Toy Details')
+
     const toy = useLoaderData()
     const navigate = useNavigate();
 

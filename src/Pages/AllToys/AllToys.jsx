@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import TableRow from '../TableRow/TableRow';
+import useLegoTitle from '../../hooks/useLegoTitle';
 
 const AllToys = () => {
+  useLegoTitle('All Toys')
   const [toys, setToys, ] = useState([]);
   const [loading, setLoading] = useState(true);
   const [sort, setSort] = useState('all');

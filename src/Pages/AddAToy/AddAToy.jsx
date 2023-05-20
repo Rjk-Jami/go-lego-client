@@ -2,8 +2,11 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../provider/AuthProvider';
 import Select from "react-select/creatable";
+import useLegoTitle from '../../hooks/useLegoTitle';
 
 const AddAToy = () => {
+    useLegoTitle('Add a Toy')
+
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const { user } = useContext(AuthContext);
     const [selectedOption, setSelectedOption] = useState(null);

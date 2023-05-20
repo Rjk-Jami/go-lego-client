@@ -3,9 +3,12 @@ import { useForm } from "react-hook-form";
 import { FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
+import useLegoTitle from '../../hooks/useLegoTitle';
 
 
 const Login = () => {
+    useLegoTitle('Login')
+
     const { register, handleSubmit, watch, formState: { errors }, reset } = useForm();
     const [showPassword, setShowPassword] = useState(false);
 

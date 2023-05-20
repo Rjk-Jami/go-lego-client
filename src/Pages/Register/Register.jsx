@@ -4,10 +4,13 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
 import { toast } from 'react-hot-toast';
 import { updateProfile } from 'firebase/auth';
+import useLegoTitle from '../../hooks/useLegoTitle';
 
 
 
 const Register = () => {
+    useLegoTitle('Register')
+
     const { auth, CreateUser } = useContext(AuthContext)
     //for redirect pages 
     const navigate = useNavigate()

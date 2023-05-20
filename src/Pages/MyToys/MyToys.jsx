@@ -2,9 +2,12 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
 import MyToy from './MyToy';
 import Swal from 'sweetalert2'
+import useLegoTitle from '../../hooks/useLegoTitle';
 
 
 const MyToys = () => {
+  useLegoTitle('My Toys')
+
     const {user,loading, setLoading } = useContext(AuthContext)
     const [toys, setToys] = useState([])
 

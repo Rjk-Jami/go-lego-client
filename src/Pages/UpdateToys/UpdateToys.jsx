@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { reload } from 'firebase/auth';
+import useLegoTitle from '../../hooks/useLegoTitle';
 
 const UpdateToys = () => {
+    useLegoTitle('Update Toy')
+
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const toy = useLoaderData()
     const navigate = useNavigate();

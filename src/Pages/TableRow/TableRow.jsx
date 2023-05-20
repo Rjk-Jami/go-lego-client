@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const TableRow = ({toy}) => {
     const {_id,sellerName,rating,price,name,message,imgLink,email,category ,availableQuantity,applyDate} =toy
     return (
-        <tbody>
+        <tbody className=''>
            
             <tr >
 
@@ -36,7 +36,7 @@ const TableRow = ({toy}) => {
   {availableQuantity}
 </td>
                 <th>
-                    <Link to={`/allToys/${_id}`}><button className="btn btn-outline btn-xs bg-purple-200  hover:bg-purple-400">details</button></Link>
+                    <Link to={`/allToys/${_id}`}><button className="btn btn-info btn-xs">details</button></Link>
                 </th>
             </tr>
 

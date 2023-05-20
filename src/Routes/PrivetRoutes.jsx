@@ -9,7 +9,7 @@ const PrivetRoute = ({children}) => {
     const {user, loading} = useContext(AuthContext)
 // loader for privet page reload
     if(loading){
-        return <div className="flex justify-center"><progress className="progress w-56"></progress>
+        return <div className="flex justify-center"><progress className="progress w-full container"></progress>
         </div>
     }
     // privet page secret

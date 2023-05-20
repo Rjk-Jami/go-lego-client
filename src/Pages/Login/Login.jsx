@@ -55,7 +55,7 @@ const Login = () => {
 
                 <div className="card  w-full shadow-2xl bg-base-100">
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <div className="card-body">
+                        <div className="card-body ">
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>

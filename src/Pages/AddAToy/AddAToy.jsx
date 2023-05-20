@@ -12,18 +12,19 @@ const AddAToy = () => {
         data.category = selectedOption.value
         data.email = user?.email
         data.sellerName = user?.displayName
+
         console.log("jami", data);
-        fetch(`http://localhost:5000/addAToy`,{
-            method:"POST",
-            headers:{
-                "content-type":"application/json"
+        fetch(`http://localhost:5000/addAToy`, {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
             },
             body: JSON.stringify(data)
         })
-        .then(res=>{})
-        .then(data=>{
-            reset()
-        })
+            .then(res => { })
+            .then(data => {
+                reset()
+            })
 
     };
 
@@ -51,7 +52,7 @@ const AddAToy = () => {
                             Toy Name
                         </label>
                         <input
-                        placeholder='Toy name'
+                            placeholder='Toy name'
                             type="text"
                             id="name"
                             {...register('name', { required: true })}
@@ -64,14 +65,14 @@ const AddAToy = () => {
                             Image Link
                         </label>
                         <input
-                        placeholder='Toy Photo'
+                            placeholder='Toy Photo'
                             type="text"
                             id="imgLink"
                             {...register('imgLink', { required: true })}
                             className="mt-1 px-3 py-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                         />
                         {errors.imgLink && <p className="text-red-500">Image link is required</p>}
-                        
+
                     </div>
                     <div className="">
                         <label htmlFor="imgLink" className="block text-sm font-medium text-gray-700">
@@ -86,29 +87,31 @@ const AddAToy = () => {
                     </div>
                     <div className="flex">
                         <div className=" flex flex-col ">
-                        <label htmlFor="price" className="block text-sm font-medium text-gray-700">
-                            Price
-                        </label>
-                        <input
-                        placeholder='Toy Price'
-                            type="text"
-                            id="price"
-                            {...register('price', { required: true })}
-                            className="mt-1 px-3 py-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                        />
-                        {errors.price && <p className="text-red-500">Price is required</p>}
+                            <label htmlFor="price" className="block text-sm font-medium text-gray-700">
+                                Price
+                            </label>
+                            <input
+                                placeholder='Toy Price'
+                                type="text"
+                                id="price"
+                                {...register('price', { required: true })}
+                                className="mt-1 px-3 py-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                            />
+                            {errors.price && <p className="text-red-500">Price is required</p>}
                         </div>
-                        <div className=" flex flex-col "><label htmlFor="availableQuantity" className="block text-sm font-medium text-gray-700">
-                            Available Quantity
-                        </label>
-                        <input
-                        placeholder='Available Quantity'
-                            type="text"
-                            id="availableQuantity"
-                            {...register('availableQuantity', { required: true })}
-                            className="mt-1 px-3 py-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                        />
-                        {errors.availableQuantity && <p className="text-red-500">Available quantity is required</p>}</div>
+                        <div className=" flex flex-col ">
+                            <label htmlFor="availableQuantity" className="block text-sm font-medium text-gray-700">
+                                Available Quantity
+                            </label>
+                            <input
+                                placeholder='Available Quantity'
+                                type="text"
+                                id="availableQuantity"
+                                {...register('availableQuantity', { required: true })}
+                                className="mt-1 px-3 py-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                            />
+                            {errors.availableQuantity && <p className="text-red-500">Available quantity is required</p>}
+                        </div>
                     </div>
 
                     <div className="">
@@ -123,27 +126,27 @@ const AddAToy = () => {
                         />
                         {errors.applyDate && <p className="text-red-500">Added date is required</p>}
                     </div>
-                
-                <div className="">
-                    <label htmlFor="price" className="block text-sm font-medium text-gray-700">
-                        Rating
-                    </label>
-                    <div className="mt-1">
-                        {rating.map((rating) => (
-                            <label key={rating.value} className="inline-flex items-center gap-1 mx-1">
-                                <input
-                                    type="radio"
-                                    id={rating.value}
-                                    value={rating.value}
-                                    {...register('rating', { required: true })}
-                                    className="form-radio h-4 w-4 text-blue-500"
-                                />
-                                <span className="ml-2">{rating.label}</span>
-                            </label>
-                        ))}
-                        {errors.rating && <p className="text-red-500">Rating is required</p>}
+
+                    <div className="">
+                        <label htmlFor="price" className="block text-sm font-medium text-gray-700">
+                            Rating
+                        </label>
+                        <div className="mt-1">
+                            {rating.map((rating) => (
+                                <label key={rating.value} className="inline-flex items-center gap-1 mx-1">
+                                    <input
+                                        type="radio"
+                                        id={rating.value}
+                                        value={rating.value}
+                                        {...register('rating', { required: true })}
+                                        className="form-radio h-4 w-4 text-blue-500"
+                                    />
+                                    <span className="ml-2">{rating.label}</span>
+                                </label>
+                            ))}
+                            {errors.rating && <p className="text-red-500">Rating is required</p>}
+                        </div>
                     </div>
-                </div>
                 </div>
                 <div className="">
                     <label htmlFor="applyDate" className="block text-sm font-medium text-gray-700">

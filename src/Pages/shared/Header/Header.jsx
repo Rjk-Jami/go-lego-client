@@ -14,13 +14,13 @@ const Header = () => {
 
 
     const routeName = <>
-        <li><NavLink className={({ isActive }) => (isActive ? 'text-error font-semibold  ' : 'text-dark')} to="/">Home</NavLink></li>
-        <li><NavLink className={({ isActive }) => (isActive ? 'text-error  font-semibold' : 'text-dark')} to="/allToys">All Toys</NavLink></li>
+        <NavLink className={({ isActive }) => (isActive ? 'text-error font-semibold  ' : 'text-dark')} to="/">Home</NavLink>
+        <NavLink className={({ isActive }) => (isActive ? 'text-error  font-semibold' : 'text-dark')} to="/allToys">All Toys</NavLink>
         
-            <><li><NavLink className={({ isActive }) => (isActive ? 'text-error font-semibold ' : 'text-dark')} to="/myToys">My Toys</NavLink></li>
-                <li><NavLink className={({ isActive }) => (isActive ? 'text-error  font-semibold' : 'text-dark')} to="/addAToy">Add A Toy</NavLink></li></>
+           <NavLink className={({ isActive }) => (isActive ? 'text-error font-semibold ' : 'text-dark')} to="/myToys">My Toys</NavLink>
+              <NavLink className={({ isActive }) => (isActive ? 'text-error  font-semibold' : 'text-dark')} to="/addAToy">Add A Toy</NavLink>
         
-        <li><NavLink className={({ isActive }) => (isActive ? 'text-error  font-semibold' : 'text-dark')} to="/blogs">Blogs</NavLink></li>
+        <NavLink className={({ isActive }) => (isActive ? 'text-error  font-semibold' : 'text-dark')} to="/blogs">Blogs</NavLink>
 
 
     </>
@@ -44,7 +44,7 @@ const Header = () => {
                     <h2 className='font-bold md:text-xl'><span className='md:font-extrabold'>G</span>O LO<span className='md:font-extrabold'>G</span>O</h2>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1">
+                    <ul className="menu menu-horizontal flex gap-3 px-1">
                         {
 
                             routeName

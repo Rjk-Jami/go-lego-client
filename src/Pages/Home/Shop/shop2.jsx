@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Tabs, TabList, Tab, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import Marquee from "react-fast-marquee";
+
 
 const Shop2 = () => {
   const [loading, setLoading] = useState(true);
@@ -15,12 +19,14 @@ const Shop2 = () => {
       .then((res) => res.json())
       .then((data) => {
         setCategories(data);
+        AOS.init({ duration: 1000 });
         setLoading(false);
       });
   }, []);
 
   useEffect(() => {
     setLoading(true);
+
     // Fetch toys for the active category
     fetch(`http://localhost:5000/toysByCategory?category=${categories[activeCategory]}`)
       .then((res) => res.json())
@@ -36,12 +42,16 @@ const Shop2 = () => {
 
   return (
     <>
+    <Marquee >
+    Step into a world where imagination takes shape, as the vibrant colors and endless possibilities of LEGO come alive before your eyes.
+   
+</Marquee>
       {loading && (
         <div className="flex justify-center">
-          <progress className="progress w-full container"></progress>
+          <progress className="progress w-full "></progress>
         </div>
       )}
-      <div className=" ">
+      <div data-aos="fade-up" className=" ">
         <Tabs forceRenderTabPanel defaultIndex={1}>
           <TabList>
             {categories.map((category, index) => (
@@ -55,11 +65,11 @@ const Shop2 = () => {
               <Tabs forceRenderTabPanel>
                 <TabList>
                   {toys.map((item) => (
-                    <Tab key={item.name}>{item.name}</Tab>
+                    <Tab key={item._id}>{item.name}</Tab>
                   ))}
                 </TabList>
                 {toys.map((item) => (
-                  <TabPanel key={item.name}>
+                  <TabPanel key={item._id}>
                     <div className="card w-96 bg-base-100 shadow-xl">
                       <figure>
                         <img src={item.imgLink} alt="Shoes" />

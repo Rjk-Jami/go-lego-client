@@ -2,17 +2,29 @@ import React, { useEffect, useState } from 'react';
 import TableRow from '../TableRow/TableRow';
 import useLegoTitle from '../../hooks/useLegoTitle';
 import { toast } from 'react-hot-toast';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const AllToys = () => {
   useLegoTitle('All Toys')
-  const [toys, setToys, ] = useState([]);
+  const [toys, setToys,] = useState([]);
   const [loading, setLoading] = useState(true);
   const [sort, setSort] = useState('all');
 
   useEffect(() => {
     fetchToys(sort);
   }, [sort]);
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      easing: 'ease-out',
+    });
+  }, []);
 
+  useEffect(() => {
+    AOS.refresh();
+  });
   const fetchToys = async sort => {
     try {
       setLoading(true);
@@ -21,7 +33,7 @@ const AllToys = () => {
       const data = await response.json();
       setToys(data);
       setLoading(false);
-      if(sort !=="all"){
+      if (sort !== "all") {
         toast.success(`sort by ${sort}`)
       }
     } catch (error) {
@@ -29,12 +41,13 @@ const AllToys = () => {
     }
   };
 
+
   const handleSort = sortType => {
     setSort(sortType);
   };
 
   return (
-    <div className="overflow-x-auto w-full">
+    <div data-aos="fade-up" className="overflow-x-auto w-full">
       <div className="container mx-auto flex justify-between items-center py-2" >
         <h2 className="text-2xl font-semibold">Showing toys: ({toys.length})</h2>
 
@@ -49,12 +62,12 @@ const AllToys = () => {
             </button></li>
           </ul>
         </div>
-        
+
       </div>
       {loading && (
         <div className="flex justify-center"><progress className="progress w-full container"></progress>
         </div>
-        )
+      )
       }
       <table className="table w-full container mx-auto">
         <thead>

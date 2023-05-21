@@ -68,7 +68,7 @@ const MyToys = () => {
             </thead>
 
             {
-                toys.map(toy=><MyToy key={toy._id} toy={toy} handleDelete={handleDeleteMyToy}></MyToy>)
+                toys.map(toy=><MyToy key={toy._id} toy={toy} handleDeleteMyToy={handleDeleteMyToy}></MyToy>)
 
 }   
 

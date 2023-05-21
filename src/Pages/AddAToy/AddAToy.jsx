@@ -5,6 +5,8 @@ import Select from "react-select/creatable";
 import useLegoTitle from '../../hooks/useLegoTitle';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import Swal from 'sweetalert2'
+import { toast } from 'react-hot-toast';
 
 const AddAToy = () => {
     useLegoTitle('Add a Toy')
@@ -28,21 +30,29 @@ const AddAToy = () => {
         })
             .then(res => { })
             .then(data => {
+
+                Swal.fire({
+                    position: 'top',
+                    icon: 'success',
+                    title: 'Added a Lego',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
                 reset()
             })
 
     };
     useEffect(() => {
         AOS.init({
-          duration: 1000,
-          once: true,
-          easing: 'ease-out',
+            duration: 1000,
+            once: true,
+            easing: 'ease-out',
         });
-      }, []);
-    
-      useEffect(() => {
+    }, []);
+
+    useEffect(() => {
         AOS.refresh();
-      });
+    });
 
     const options = [
         { value: "starWars", label: "starWars" },
@@ -61,8 +71,8 @@ const AddAToy = () => {
 
     return (
         <div data-aos="zoom-in" className='my-5'>
-            <form onSubmit={handleSubmit(onSubmit)} className="w-2/3 mx-auto space-y-4">
-                <div className="grid md:grid-cols-2 grid-cols-1 gap-2 items-center">
+            <form onSubmit={handleSubmit(onSubmit)} className="w-2/3 mx-auto space-y-3">
+                <div className="grid md:grid-cols-2 grid-cols-1 gap-2 items-center justify-center">
                     <div className="">
                         <label htmlFor="name" className="block text-sm font-medium text-gray-700">
                             Toy Name
@@ -85,7 +95,7 @@ const AddAToy = () => {
                             type="text"
                             id="imgLink"
                             {...register('imgLink', { required: true })}
-                            className="mt-1 px-3 py-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                            className=" py-2 w-full border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                         />
                         {errors.imgLink && <p className="text-red-500">Image link is required</p>}
 
@@ -95,11 +105,13 @@ const AddAToy = () => {
                             Toy category
                         </label>
                         <Select
+                        id='select'
                             className="w-75"
                             defaultValue={selectedOption}
                             onChange={setSelectedOption}
                             options={options}
                         />
+                         {errors.select && <p className="text-red-500">category is required</p>}
                     </div>
                     <div className="flex">
                         <div className=" flex flex-col ">

@@ -7,6 +7,7 @@ import { updateProfile } from 'firebase/auth';
 import useLegoTitle from '../../hooks/useLegoTitle';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import Swal from 'sweetalert2'
 
 
 const Register = () => {

@@ -44,7 +44,7 @@ const Header = () => {
                     <h2 className='font-bold md:text-xl'><span className='md:font-extrabold'>G</span>O LO<span className='md:font-extrabold'>G</span>O</h2>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal flex gap-3 px-1">
+                    <ul className="menu menu-horizontal flex gap-3   px-1">
                         {
 
                             routeName

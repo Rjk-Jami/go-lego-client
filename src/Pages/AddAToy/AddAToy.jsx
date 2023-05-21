@@ -19,6 +19,7 @@ const AddAToy = () => {
         data.category = selectedOption.value
         data.email = user?.email
         data.sellerName = user?.displayName
+        data.price = parseInt(data.price);
 
         console.log("jami", data);
         fetch(`http://localhost:5000/addAToy`, {

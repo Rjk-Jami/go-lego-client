@@ -17,7 +17,8 @@ const UpdateToys = () => {
 
     const onSubmit = (data) => {
 
-       
+        data.price = parseInt(data.price);
+
         console.log("jami", data);
         fetch(`https://go-lego-server.vercel.app/updateToys/${_id}`, {
             method: "PUT",

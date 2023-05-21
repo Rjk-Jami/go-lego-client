@@ -34,9 +34,9 @@ const {_id,sellerName,rating,price,name,message,imgLink,email,category ,availabl
                         <Marquee className='text-white'>Offer Offer Offer Offer Offer Offer Offer Offer Offer Offer Offer Offer</Marquee>
                         </div>
                         <p className="mb-5"><MyCountdownComponent ></MyCountdownComponent> </p>
-                        <p className='text-white font-bold text-xl space-x-3'> Price : <span className='text-c relative'>{price}<span className='absolute text-error  left-5 text-4xl font-bolder'> X</span></span ><span className='text-success text-3xl font-bold'>{price-2000}</span> </p>
+                        <p className='text-white font-bold text-xl space-x-3'> Price : <span className='text-c relative'>{price}<span className='absolute text-error  left-5 text-4xl font-bolder animate-ping'> X</span></span ><span className='text-success text-3xl font-bold animate-pulse'>{price-2000}</span> </p>
                         <Link to={`/allToys`}>
-                            <button className="btn btn-secondary btn-wide rounded-3xl animate-pulse mb-5">
+                            <button className="btn btn-secondary btn-wide rounded-3xl  mb-5">
                                 Buy Now
                             </button>
                         </Link>

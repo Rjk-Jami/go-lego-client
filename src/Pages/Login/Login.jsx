@@ -149,7 +149,7 @@ const Login = () => {
                     <div className="divider">OR</div>
                     <div className="text-center mb-5">
                         <button onClick={handleGoogleLogin} className="btn  btn-outline   hover:bg-purple-400 mx-auto w-1/2"><FaGoogle /><span className='ms-2 lowercase'>Continue with Google</span></button>
-                        <p className='my-2'>Don't have an account? <Link to="/register" className='text-primary font-semibold'>Create an account</Link></p>
+                        <p className='my-2'>Don't have an account? <Link to="/register" className='text-rose-600 font-semibold'>Create an account</Link></p>
                     </div>
                 </div>
             </div>

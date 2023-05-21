@@ -6,11 +6,10 @@ import useLegoTitle from '../../hooks/useLegoTitle';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Swal from 'sweetalert2'
-import { toast } from 'react-hot-toast';
 
 const AddAToy = () => {
     useLegoTitle('Add a Toy')
-
+// react h
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
     const { user } = useContext(AuthContext);
     const [selectedOption, setSelectedOption] = useState(null);
@@ -22,7 +21,7 @@ const AddAToy = () => {
         data.price = parseInt(data.price);
 
         console.log("jami", data);
-        fetch(`https://go-lego-server.vercel.app/addAToy`, {
+        fetch(`https://go-lego-server-rjk-jami.vercel.app/addAToy`, {
             method: "POST",
             headers: {
                 "content-type": "application/json"
@@ -39,6 +38,7 @@ const AddAToy = () => {
                     showConfirmButton: false,
                     timer: 1500
                 })
+                //form reset
                 reset()
             })
 
@@ -54,14 +54,14 @@ const AddAToy = () => {
     useEffect(() => {
         AOS.refresh();
     });
-
+//category value
     const options = [
         { value: "starWars", label: "starWars" },
         { value: "architecture", label: "architecture" },
         { value: "cars", label: "cars" },
         { value: "machine", label: "machine" },
     ];
-
+// rating value
     const rating = [
         { value: "1", label: "1" },
         { value: "2", label: "2" },

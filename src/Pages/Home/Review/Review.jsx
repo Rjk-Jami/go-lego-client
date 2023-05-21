@@ -9,7 +9,7 @@ const Review = () => {
 
     useEffect(()=>{
     setLoading(true)
-            fetch(`https://go-lego-server.vercel.app/review`)
+            fetch(`https://go-lego-server-rjk-jami.vercel.app/review`)
             .then(res=>res.json())
             .then(data=>setToys(data))
     setLoading(false)

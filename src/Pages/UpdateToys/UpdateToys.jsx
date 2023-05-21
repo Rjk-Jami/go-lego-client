@@ -20,7 +20,7 @@ const UpdateToys = () => {
         data.price = parseInt(data.price);
 
         console.log("jami", data);
-        fetch(`https://go-lego-server.vercel.app/updateToys/${_id}`, {
+        fetch(`https://go-lego-server-rjk-jami.vercel.app/updateToys/${_id}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json"

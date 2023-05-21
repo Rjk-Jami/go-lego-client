@@ -15,7 +15,7 @@ const Shop2 = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch('https://go-lego-server.vercel.app/categories')
+    fetch('https://go-lego-server-rjk-jami.vercel.app/categories')
       .then((res) => res.json())
       .then((data) => {
         setCategories(data);
@@ -28,7 +28,7 @@ const Shop2 = () => {
     setLoading(true);
 
     // Fetch toys for the active category
-    fetch(`https://go-lego-server.vercel.app/toysByCategory?category=${categories[activeCategory]}`)
+    fetch(`https://go-lego-server-rjk-jami.vercel.app/toysByCategory?category=${categories[activeCategory]}`)
       .then((res) => res.json())
       .then((data) => {
         setToys(data);

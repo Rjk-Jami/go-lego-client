@@ -7,7 +7,7 @@ const Offer = () => {
     const [toy, setToy] = useState({})
     useEffect(() => {
 
-        fetch(`https://go-lego-server.vercel.app/offer`)
+        fetch(`https://go-lego-server-rjk-jami.vercel.app/offer`)
             .then(res => res.json())
             .then(data => setToy(data))
 

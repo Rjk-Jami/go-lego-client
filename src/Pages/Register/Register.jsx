@@ -1,16 +1,27 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
 import { toast } from 'react-hot-toast';
 import { updateProfile } from 'firebase/auth';
 import useLegoTitle from '../../hooks/useLegoTitle';
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 
 const Register = () => {
     useLegoTitle('Register')
-
+    useEffect(() => {
+        AOS.init({
+          duration: 1000,
+          once: true,
+          easing: 'ease-out',
+        });
+      }, []);
+    
+      useEffect(() => {
+        AOS.refresh();
+      });
     const { auth, CreateUser } = useContext(AuthContext)
     //for redirect pages 
     const navigate = useNavigate()
@@ -48,7 +59,7 @@ const Register = () => {
     const confirmPassword = watch('confirmPassword');
 
     return (
-        <div className="md:w-1/2 mx-auto">
+        <div data-aos="slide-down" className="md:w-1/2 mx-auto">
 
 
             <div className="card  w-full shadow-2xl bg-base-100">

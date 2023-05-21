@@ -1,8 +1,10 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../provider/AuthProvider';
 import Select from "react-select/creatable";
 import useLegoTitle from '../../hooks/useLegoTitle';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const AddAToy = () => {
     useLegoTitle('Add a Toy')
@@ -30,6 +32,17 @@ const AddAToy = () => {
             })
 
     };
+    useEffect(() => {
+        AOS.init({
+          duration: 1000,
+          once: true,
+          easing: 'ease-out',
+        });
+      }, []);
+    
+      useEffect(() => {
+        AOS.refresh();
+      });
 
     const options = [
         { value: "starWars", label: "starWars" },
@@ -47,7 +60,7 @@ const AddAToy = () => {
     ];
 
     return (
-        <div className='my-5'>
+        <div data-aos="zoom-in" className='my-5'>
             <form onSubmit={handleSubmit(onSubmit)} className="w-2/3 mx-auto space-y-4">
                 <div className="grid md:grid-cols-2 grid-cols-1 gap-2 items-center">
                     <div className="">

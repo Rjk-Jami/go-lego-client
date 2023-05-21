@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import TableRow from '../TableRow/TableRow';
 import useLegoTitle from '../../hooks/useLegoTitle';
+import { toast } from 'react-hot-toast';
 
 const AllToys = () => {
   useLegoTitle('All Toys')
@@ -20,6 +21,9 @@ const AllToys = () => {
       const data = await response.json();
       setToys(data);
       setLoading(false);
+      if(sort !=="all"){
+        toast.success(`sort by ${sort}`)
+      }
     } catch (error) {
       console.error('Error fetching toys:', error);
     }

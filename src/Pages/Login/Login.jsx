@@ -1,12 +1,26 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import { FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../provider/AuthProvider';
 import useLegoTitle from '../../hooks/useLegoTitle';
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import Swal from 'sweetalert2'
+import { toast } from 'react-hot-toast';
 
 const Login = () => {
+    useEffect(() => {
+        AOS.init({
+          duration: 1000,
+          once: true,
+          easing: 'ease-out',
+        });
+      }, []);
+    
+      useEffect(() => {
+        AOS.refresh();
+      });
     useLegoTitle('Login')
 
     const { register, handleSubmit, watch, formState: { errors }, reset } = useForm();
@@ -31,9 +45,12 @@ const Login = () => {
                 const loggedUser = result.user
                 console.log(loggedUser)
                 navigate(from, { replace: true })
-
+                toast.success(`Login`)
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log(err)
+                toast.error(`error`)
+            })
 
 
     };
@@ -43,6 +60,8 @@ const Login = () => {
                 const loggedUser = result.user
                 console.log(loggedUser)
                 navigate(from, { replace: true })
+                toast.success(`Login`)
+
 
             })
             .catch(err => console.log(err))
@@ -52,8 +71,8 @@ const Login = () => {
 
 
     return (
-        <div>
-            <div className="md:w-1/2 mx-auto">
+        <div >
+            <div data-aos="slide-up" className="md:w-1/2 mx-auto ">
 
 
                 <div className="card  w-full shadow-2xl bg-base-100">

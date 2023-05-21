@@ -22,7 +22,7 @@ const AddAToy = () => {
         data.price = parseInt(data.price);
 
         console.log("jami", data);
-        fetch(`http://localhost:5000/addAToy`, {
+        fetch(`https://go-lego-server.vercel.app/addAToy`, {
             method: "POST",
             headers: {
                 "content-type": "application/json"

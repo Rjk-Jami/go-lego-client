@@ -19,7 +19,7 @@ const UpdateToys = () => {
 
        
         console.log("jami", data);
-        fetch(`http://localhost:5000/updateToys/${_id}`, {
+        fetch(`https://go-lego-server.vercel.app/updateToys/${_id}`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json"

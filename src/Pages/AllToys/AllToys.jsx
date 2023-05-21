@@ -30,7 +30,7 @@ const AllToys = () => {
     try {
       setLoading(true);
 
-      const response = await fetch(`http://localhost:5000/allToys?sort=${sort}`);
+      const response = await fetch(`https://go-lego-server.vercel.app/allToys?sort=${sort}`);
       const data = await response.json();
       setToys(data);
       setLoading(false);
@@ -47,7 +47,7 @@ const AllToys = () => {
     setSort(sortType);
   };
   const handleSearch = () => {
-    fetch(`http://localhost:5000/getToysByText/${searchText}`)
+    fetch(`https://go-lego-server.vercel.app/getToysByText/${searchText}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

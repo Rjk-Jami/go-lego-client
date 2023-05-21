@@ -9,7 +9,7 @@ const Review = () => {
 
     useEffect(()=>{
     setLoading(true)
-            fetch(`http://localhost:5000/review`)
+            fetch(`https://go-lego-server.vercel.app/review`)
             .then(res=>res.json())
             .then(data=>setToys(data))
     setLoading(false)

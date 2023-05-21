@@ -11,7 +11,7 @@ const MyToys = () => {
     const {user,loading, setLoading } = useContext(AuthContext)
     const [toys, setToys] = useState([])
 
-    const URL = `http://localhost:5000/myToys?email=${user.email}`
+    const URL = `https://go-lego-server.vercel.app/myToys?email=${user.email}`
     useEffect(()=>{
         setLoading(true)
         fetch(URL,{
@@ -36,7 +36,7 @@ const MyToys = () => {
             confirmButtonText: 'Yes, delete it!'
           }).then((result) => {
             if (result.isConfirmed) {
-              fetch(`http://localhost:5000/allToys/${id}`,{
+              fetch(`https://go-lego-server.vercel.app/allToys/${id}`,{
                 method: "DELETE"
               })
               .then(res=>res.json())

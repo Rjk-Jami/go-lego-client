@@ -15,7 +15,7 @@ const PhotoGallery = () => {
 
   const fetchPhotos = async () => {
     try {
-      const response = await fetch('http://localhost:5000/photos');
+      const response = await fetch('https://go-lego-server.vercel.app/photos');
       const data = await response.json();
       setPhotos(data);
     } catch (error) {

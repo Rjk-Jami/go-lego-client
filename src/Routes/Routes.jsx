@@ -53,12 +53,12 @@ import UpdateToys from "../Pages/UpdateToys/UpdateToys";
         {
           path: "/allToys/:id",
           element:<PrivetRoute> <ToyDetails/></PrivetRoute>,
-          loader: ({params})=>fetch(`http://localhost:5000/allToys/${params.id}`)
+          loader: ({params})=>fetch(`https://go-lego-server.vercel.app/allToys/${params.id}`)
         },
         {
           path: "/updateToys/:id",
           element:<PrivetRoute><UpdateToys/></PrivetRoute>,
-          loader: ({params})=>fetch(`http://localhost:5000/updateToys/${params.id}`)
+          loader: ({params})=>fetch(`https://go-lego-server.vercel.app/updateToys/${params.id}`)
         },
       ],
     },
